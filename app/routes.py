@@ -7,11 +7,13 @@ from app.forms import RegistrationForm
 from app.models import User
 from app.models import Card
 from datetime import datetime
+from flask_cors import CORS
 from flask_login import current_user
 from flask_login import login_required
 from flask_login import login_user
 from flask_login import logout_user
 from flask import flash
+from flask import jsonify
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -225,7 +227,7 @@ def view_cards():
     return render_template('view_cards.html', cards=cards)
 
 
-@app.route('/cards/<int:card_id>/like')
+@app.route('/cards/<int:card_id>/like', methods=['GET', 'POST'])
 def like_card(card_id):
     user_and_favorite_dict = {
         'user_id': current_user.id,
@@ -235,7 +237,7 @@ def like_card(card_id):
     return redirect(url_for('view_cards'))
 
 
-@app.route('/cards/<int:card_id>/unlike')
+@app.route('/cards/<int:card_id>/unlike', methods=['GET', 'POST'])
 def unlike_card(card_id):
     favorite_dict = {
         'user_id': current_user.id,

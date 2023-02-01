@@ -287,6 +287,8 @@ cython_debug/
 # David's added items:
 .flaskenv
 .vscode/
+*.jpg
+*.png
 **/__pycache__/
 config.py
 logs/

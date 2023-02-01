@@ -755,6 +755,17 @@ body {
     grid-area: card-status;
 }
 
+.remove-button-styling {
+    background: none;
+	color: inherit;
+    display: inline;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
 .card-like-button,
 .card-add-to-cart-button {
     /* outline: 1pt solid red; */

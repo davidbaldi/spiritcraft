@@ -1,12 +1,6 @@
-<script>
-    let cardId = {{ card.id }};
-    const likeCardURL = "{{ url_for('like_card', card_id=card.id) }}";
-    const unlikeCardURL = "{{ url_for('unlike_card', card_id=card.id) }}";
-</script>
 <div class="card-whole-div">
     <div class="card-itself">
         <img src="/static/{{ card.filename }}" alt="Image of {{ card.card_name }}" class="card-img-resizing">
-        <!-- <img src="\\wsl.localhost\Ubuntu-20.04\home\spiritcraft\app\static\rae.png" alt="Image of Rae" class="card-img-resizing"> -->
     </div>
     <div class="card-bottom-info">
         <div class="card-bottom-info-name card-bottom-info-entry">
@@ -20,15 +14,15 @@
         </div>
         <div class="card-like-button">
             {% if card.id not in current_user.favorite_cards %}
-                <form action="/cards/{{ card.id }}/like">
-                    <button type="submit" id="" class="remove-button-styling">
-                        <img src="/static/img-unliked.png" alt="'Unliked' symbol" class="card-img-like-button">
+            <form>
+                    <button type="submit" id="heartButton" class="remove-button-styling" onclick="toggleCardLike({{ card.id }})">
+                        <img src="/static/img-unliked.png" id="heartImage{{ card.id }}" alt="'Unliked' symbol" class="card-img-like-button">
                     </button>
                 </form>
                 {% elif card.id in current_user.favorite_cards %}
-                <form action="/cards/{{ card.id }}/unlike">
-                    <button type="submit" class="remove-button-styling">
-                        <img src="/static/img-liked.png" alt="'Liked' symbol" class="card-img-like-button">
+                <form>
+                    <button type="submit" id="heartButton" class="remove-button-styling" onclick="toggleCardLike({{ card.id }})">
+                        <img src="/static/img-liked.png" id="heartImage{{ card.id }}" alt="'Liked' symbol" class="card-img-like-button">
                     </button>
                 </form>
             {% endif %}

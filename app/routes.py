@@ -13,13 +13,14 @@ from flask_login import login_required
 from flask_login import login_user
 from flask_login import logout_user
 from flask import flash
-from flask import jsonify
+from flask import json
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import session
 from flask import url_for
 from werkzeug.urls import url_parse
+import asyncio
 
 
 @app.before_request
@@ -227,21 +228,8 @@ def view_cards():
     return render_template('view_cards.html', cards=cards)
 
 
-@app.route('/cards/<int:card_id>/like', methods=['GET', 'POST'])
-def like_card(card_id):
-    user_and_favorite_dict = {
-        'user_id': current_user.id,
-        'card_id': card_id
-        }
-    Card.like_card(user_and_favorite_dict)
-    return redirect(url_for('view_cards'))
-
-
-@app.route('/cards/<int:card_id>/unlike', methods=['GET', 'POST'])
-def unlike_card(card_id):
-    favorite_dict = {
-        'user_id': current_user.id,
-        'card_id': card_id
-        }
-    Card.unlike_card(favorite_dict=favorite_dict)
-    return redirect(url_for('view_cards'))
+@app.route('/cards/like_or_unlike_card', methods=['GET', 'POST'])
+def toggle_card_like():
+    # Card.unlike_card(user_and_favorite_card_dict)
+    # Card.like_card(user_and_favorite_card_dict)
+    pass

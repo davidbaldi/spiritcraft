@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
 # db = __import__('config').Config.db # What is going on here?
-db = ''
+db = '' # How is this empty but the database can still be accessed?
 
 
 @login.user_loader
@@ -118,6 +118,7 @@ class User(UserMixin):
 
 
     def record_last_seen(self, current_user):
+        return
         query = """
                 UPDATE users
                 SET last_seen = %(last_seen)s

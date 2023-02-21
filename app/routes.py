@@ -7,7 +7,6 @@ from app.forms import RegistrationForm
 from app.models import User
 from app.models import Card
 from datetime import datetime
-from flask_cors import CORS
 from flask_login import current_user
 from flask_login import login_required
 from flask_login import login_user
@@ -20,7 +19,6 @@ from flask import request
 from flask import session
 from flask import url_for
 from werkzeug.urls import url_parse
-import asyncio
 
 
 @app.before_request
@@ -228,8 +226,30 @@ def view_cards():
     return render_template('view_cards.html', cards=cards)
 
 
-@app.route('/cards/like_or_unlike_card', methods=['GET', 'POST'])
+@app.route('/cards/toggle_card_like', methods=['GET', 'POST'])
 def toggle_card_like():
-    # Card.unlike_card(user_and_favorite_card_dict)
-    # Card.like_card(user_and_favorite_card_dict)
-    pass
+    Card.get_liked_cards(current_user.__dict__)
+    cardStatus = json.loads(request.json)
+    user_and_favorite_card_dict = {
+        "user_id": current_user.id,
+        "card_id": cardStatus["cardId"],
+        "heart_button_status": cardStatus["heartButtonStatus"]
+    }
+    if cardStatus["heartButtonStatus"] == "true":
+        if cardStatus["cardId"] not in current_user.favorite_cards:
+            Card.like_card(user_and_favorite_card_dict)
+            cardStatus["heartButtonStatus"] = "true"
+            print("CARDSTATUS IF1: ", cardStatus)
+            return json.dumps(cardStatus)
+        if cardStatus["cardId"] in current_user.favorite_cards:
+            print("CARDSTATUS IF2: ", cardStatus)
+            return json.dumps(cardStatus)
+    elif cardStatus["heartButtonStatus"] == "false":
+        if cardStatus["cardId"] in current_user.favorite_cards:
+            Card.unlike_card(user_and_favorite_card_dict)
+            cardStatus["heartButtonStatus"] = "false"
+            print("CARDSTATUS IF3: ", cardStatus)
+            return json.dumps(cardStatus)
+        if cardStatus["cardId"] not in current_user.favorite_cards:
+            print("CARDSTATUS IF4: ", cardStatus)
+            return json.dumps(cardStatus)

@@ -13,19 +13,19 @@
             <i>status</i> <b>Private Collection</b>
         </div>
         <div class="card-like-button">
-            {% if card.id not in current_user.favorite_cards %}
-            <form>
-                    <button type="submit" id="heartButton" class="remove-button-styling" onclick="toggleCardLike({{ card.id }})">
-                        <img src="/static/img-unliked.png" id="heartImage{{ card.id }}" alt="'Unliked' symbol" class="card-img-like-button">
-                    </button>
-                </form>
-                {% elif card.id in current_user.favorite_cards %}
-                <form>
-                    <button type="submit" id="heartButton" class="remove-button-styling" onclick="toggleCardLike({{ card.id }})">
-                        <img src="/static/img-liked.png" id="heartImage{{ card.id }}" alt="'Liked' symbol" class="card-img-like-button">
-                    </button>
-                </form>
+            {% if card.id in current_user.favorite_cards %}
+                {% set heart_button_status = 'true' %}
+                {% set img_src_version = '/static/img-liked.png' %}
+            {% elif card.id not in current_user.favorite_cards %}
+                {% set heart_button_status = 'false' %}
+                {% set img_src_version = '/static/img-unliked.png' %}
             {% endif %}
+            <form action="#">
+                <button type="submit" id="heartButton{{ card.id }}" class="remove-button-styling" 
+                        onclick="toggleCardLike({{ card.id }})" aria-pressed="{{ heart_button_status }}">
+                    <img src="{{ img_src_version }}" id="heartImage{{ card.id }}" alt="'Unliked' symbol" class="card-img-like-button heartButton">
+                </button>
+            </form>
         </div>
         <div class="card-add-to-cart-button">
             <img src="/static/img-cart.png" alt="'Add to Cart' button" class="card-img-add-to-cart-button">

@@ -233,23 +233,15 @@ def toggle_card_like():
     user_and_favorite_card_dict = {
         "user_id": current_user.id,
         "card_id": cardStatus["cardId"],
-        "heart_button_status": cardStatus["heartButtonStatus"]
+        "heart_button_status": cardStatus["isCardLiked"]
     }
-    if cardStatus["heartButtonStatus"] == "true":
-        if cardStatus["cardId"] not in current_user.favorite_cards:
-            Card.like_card(user_and_favorite_card_dict)
-            cardStatus["heartButtonStatus"] = "true"
-            print("CARDSTATUS IF1: ", cardStatus)
-            return json.dumps(cardStatus)
-        if cardStatus["cardId"] in current_user.favorite_cards:
-            print("CARDSTATUS IF2: ", cardStatus)
-            return json.dumps(cardStatus)
-    elif cardStatus["heartButtonStatus"] == "false":
-        if cardStatus["cardId"] in current_user.favorite_cards:
-            Card.unlike_card(user_and_favorite_card_dict)
-            cardStatus["heartButtonStatus"] = "false"
-            print("CARDSTATUS IF3: ", cardStatus)
-            return json.dumps(cardStatus)
-        if cardStatus["cardId"] not in current_user.favorite_cards:
-            print("CARDSTATUS IF4: ", cardStatus)
-            return json.dumps(cardStatus)
+    if cardStatus["isCardLiked"] == "true" or \
+            cardStatus["cardId"] in current_user.favorite_cards:
+        Card.unlike_card(user_and_favorite_card_dict)
+        cardStatus["isCardLiked"] = "false"
+        return json.dumps(cardStatus)
+    elif cardStatus["isCardLiked"] == "false" or \
+            cardStatus["cardId"] not in current_user.favorite_cards:
+        Card.like_card(user_and_favorite_card_dict)
+        cardStatus["isCardLiked"] = "true"
+        return json.dumps(cardStatus)

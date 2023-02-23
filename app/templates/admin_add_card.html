@@ -17,8 +17,8 @@
                     {{ form.description(size=64) }}<br>
                 </p>
                 <p>
-                    {{ form.type.label }}<br>
-                    {{ form.type() }}<br>
+                    {{ form.card_type.label }}<br>
+                    {{ form.card_type(onchange="toggleGenusOrOrder(value)") }}<br>
                 </p>
                 <p>
                     {{ form.released_on.label }}<br>
@@ -27,6 +27,10 @@
                 <p>
                     {{ form.status.label }}<br>
                     {{ form.status() }}<br>
+                </p>
+                <p>
+                    {{ form.stock.label }}<br>
+                    {{ form.stock() }}<br>
                 </p>
                 <p>
                     {{ form.quantity.label }}<br>
@@ -42,11 +46,11 @@
                 </p>
                 <p>
                     {{ form.card_genus.label }}<br>
-                    {{ form.card_genus() }}<br>
+                    {{ form.card_genus(disabled=False) }}<br>
                 </p>
                 <p>
                     {{ form.card_order.label }}<br>
-                    {{ form.card_order() }}<br>
+                    {{ form.card_order(disabled=True) }}<br>
                 </p>
                 <p>
                     {{ form.card_issue.label }}<br>

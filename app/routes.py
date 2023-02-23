@@ -227,7 +227,7 @@ def view_cards():
 
 
 @app.route('/cards/toggle_card_like', methods=['GET', 'POST'])
-def toggle_card_like():
+async def toggle_card_like():
     Card.get_liked_cards(current_user.__dict__)
     cardStatus = json.loads(request.json)
     user_and_favorite_card_dict = {

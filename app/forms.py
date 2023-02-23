@@ -90,8 +90,8 @@ class EditProfileForm(FlaskForm):
 class AddNewCardForm(FlaskForm):
     card_name = StringField('Name', validators=[
         DataRequired()])
-    card_genus = StringField('Card Genus')
-    card_order = StringField('Card Order')
+    card_genus = StringField('Card Genus', id='card_genus')
+    card_order = StringField('Card Order', id='card_order')
     description = TextAreaField('Description', validators=[
         DataRequired(),
         Length(min=0, max=1023)])
@@ -115,16 +115,20 @@ class AddNewCardForm(FlaskForm):
     status = SelectField('Status', validators=[
         DataRequired()],
         choices=[
-            'In stock',
-            'Out of stock',
-            'On Sale!',
             'Limited Edition',
             'Gone Forever!',
             'Promo',
             'Private collection'
             ])
+    stock = SelectField('Stock', validators=[
+        DataRequired()],
+        choices=[
+            'In stock',
+            'Out of stock',
+            'On Sale!',
+            ])
     submit = SubmitField('Add card')
-    type = SelectField('Type', validators=[
+    card_type = SelectField('Card Type', id='card_type', validators=[
         DataRequired()],
         choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
 
@@ -154,9 +158,14 @@ class EditCardForm(FlaskForm):
         Length(min=0, max=15)])
     released_on = DateField('Release Date', validators=[
         DataRequired()])
-    status = StringField('Status', validators=[
-        DataRequired(),
-        Length(min=0, max=32)])
+    status = SelectField('Status', validators=[
+        DataRequired()],
+        choices=[
+            'Limited Edition',
+            'Gone Forever!',
+            'Promo',
+            'Private collection'
+            ])
     quantity = IntegerField('Quantity', validators=[
         DataRequired()])
     filename = StringField('Filename', validators=[

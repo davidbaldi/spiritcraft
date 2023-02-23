@@ -21,7 +21,7 @@
                 {% set img_src_version = '/static/img-unliked.png' %}
             {% endif %}
             <form action="#">
-                <button type="submit" id="heartButton{{ card.id }}" class="remove-button-styling" 
+                <button type="button" id="heartButton{{ card.id }}" class="remove-button-styling" 
                         onclick="toggleCardLike({{ card.id }})" aria-pressed="{{ isCardLiked }}">
                     <img src="{{ img_src_version }}" id="heartImage{{ card.id }}" alt="'Unliked' symbol" class="card-img-like-button heartButton">
                 </button>

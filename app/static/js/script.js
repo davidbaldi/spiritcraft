@@ -16,11 +16,32 @@ function toggleCardLike(cardId) {
     .then(response => response.json())
     .then(response => {
         if (response.isCardLiked == "true") {
-            heartImage.src = "http://localhost:5000/static/img-liked.png";
+            heartImage.src = "static/img-liked.png";
             heartButton.ariaPressed = true;
         } else if (response.isCardLiked == "false") {
-            heartImage.src = "http://localhost:5000/static/img-unliked.png";
+            heartImage.src = "static/img-unliked.png";
             heartButton.ariaPressed = false;
         };
     });
+};
+
+function toggleGenusOrOrder(value) {
+    console.log("Entered function!");
+    var genusField = document.getElementById("card_genus");
+    var orderField = document.getElementById("card_order");
+
+    switch(value) {
+        case "Entity":
+            genusField.disabled = false;
+            orderField.disabled = true;
+            break;
+        case "Helper":
+        case "Item":
+            genusField.disabled = true;
+            orderField.disabled = false;
+            break;
+        default:
+            genusField.disabled = true;
+            orderField.disabled = true;
+    }
 };

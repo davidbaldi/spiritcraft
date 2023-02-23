@@ -101,8 +101,8 @@ class AddNewCardForm(FlaskForm):
     card_issue = SelectField('Card Issue', validators=[
         DataRequired()],
         choices=[
-            'collectable',
-            'playable'
+            'playable',
+            'collectable'
             ])
     price = DecimalField('Price', validators=[
         InputRequired(),
@@ -115,6 +115,7 @@ class AddNewCardForm(FlaskForm):
     status = SelectField('Status', validators=[
         DataRequired()],
         choices=[
+            'Standard',
             'Limited Edition',
             'Gone Forever!',
             'Promo',

@@ -30,7 +30,7 @@
                 </p>
                 <p>
                     {{ form.stock.label }}<br>
-                    {{ form.stock() }}<br>
+                    {{ form.stock(onchange="togglePriceField(value)") }}<br>
                 </p>
                 <p>
                     {{ form.quantity.label }}<br>
@@ -54,7 +54,7 @@
                 </p>
                 <p>
                     {{ form.card_issue.label }}<br>
-                    {{ form.card_issue() }}<br>
+                    {{ form.card_issue(onchange="toggleCardIssueField(value)") }}<br>
                 </p>
                 <br>
                 <p>

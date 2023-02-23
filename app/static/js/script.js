@@ -26,7 +26,6 @@ function toggleCardLike(cardId) {
 };
 
 function toggleGenusOrOrder(value) {
-    console.log("Entered function!");
     var genusField = document.getElementById("card_genus");
     var orderField = document.getElementById("card_order");
 
@@ -45,3 +44,32 @@ function toggleGenusOrOrder(value) {
             orderField.disabled = true;
     }
 };
+
+function togglePriceField(value) {
+    var priceField = document.getElementById("price");
+    var quantityField = document.getElementById("quantity");
+
+    if (value == "Out of stock") {
+        priceField.disabled = true;
+        quantityField.disabled = true;
+    } else if (value != "Out of stock") {
+        priceField.disabled = false;
+        quantityField.disabled = false;
+    }
+}
+
+function toggleCardIssueField(value) {
+    var TypeField = document.getElementById("card_type");
+    var genusField = document.getElementById("card_genus");
+    var orderField = document.getElementById("card_order");
+
+    if (value == "collectable") {
+        TypeField.disabled = true;
+        genusField.disabled = true;
+        orderField.disabled = true;
+    } else if (value == "playable") {
+        TypeField.disabled = false;
+        genusField.disabled = false;
+        orderField.disabled = false;
+    }
+}

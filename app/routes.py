@@ -140,20 +140,25 @@ def admin_dashboard():
 @app.route('/admin/cards/add_card', methods=['GET', 'POST'])
 @login_required
 def admin_add_card():
+    print("FUNCTION ENTERED!")
     form = AddNewCardForm()
-    if form.validate_on_submit():
+    print("FORM CREATED!")
+    # if form.validate_on_submit():
+    if request.method == 'POST':
+        print("FORM VALIDATED!")
         new_card_dict = {
             'card_genus': form.card_genus.data,
             'card_issue': form.card_issue.data,
             'card_name': form.card_name.data,
             'card_order': form.card_order.data,
+            'card_type': form.card_type.data,
             'description': form.description.data,
             'filename': form.filename.data,
             'price': form.price.data,
             'quantity': form.quantity.data,
             'released_on': form.released_on.data,
             'status': form.status.data,
-            'type': form.type.data
+            'stock': form.stock.data
             }
         if not form.validate_card_name(new_card_dict):
             return redirect(request.url)
@@ -194,7 +199,7 @@ def admin_edit_one_card(card_name):
             'original_card_name': form.original_card_name,
             'card_name': form.card_name.data,
             'description': form.description.data,
-            'type': form.type.data,
+            'type': form.card_type.data,
             'released_on': form.released_on.data,
             'status': form.status.data,
             'quantity': form.quantity.data,
@@ -206,7 +211,7 @@ def admin_edit_one_card(card_name):
     elif request.method == 'GET':
         form.card_name.data = card.card_name
         form.description.data = card.description
-        form.type.data = card.type
+        form.card_type.data = card.type
         form.released_on.data = card.released_on
         form.status.data = card.status
         form.quantity.data = card.quantity

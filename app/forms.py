@@ -88,32 +88,29 @@ class EditProfileForm(FlaskForm):
 
 
 class AddNewCardForm(FlaskForm):
-    card_name = StringField('Name', validators=[
-        DataRequired()])
     card_genus = StringField('Card Genus', id='card_genus')
-    card_order = StringField('Card Order', id='card_order')
-    description = TextAreaField('Description', validators=[
-        DataRequired(),
-        Length(min=0, max=1023)])
-    filename = StringField('Filename', validators=[
-        DataRequired(),
-        Length(min=0, max=127)])
-    card_issue = SelectField('Card Issue', validators=[
-        DataRequired()],
+    card_issue = SelectField('Card Issue', 
         choices=[
             'playable',
             'collectable'
             ])
-    price = DecimalField('Price', validators=[
-        InputRequired(),
-        NumberRange(min=0)])
-    quantity = IntegerField('Quantity', validators=[
-        InputRequired(),
-        NumberRange(min=0)])
-    released_on = DateField('Release Date', validators=[
+    card_name = StringField('Name', validators=[
         DataRequired()])
-    status = SelectField('Status', validators=[
-        DataRequired()],
+    card_order = StringField('Card Order', id='card_order')
+    card_type = SelectField('Card Type', id='card_type',
+        choices=[
+            'Entity',
+            'Item',
+            'Helper',
+            'Philosophy',
+            'Spirit'
+            ])
+    description = TextAreaField('Description')
+    filename = StringField('Filename')
+    price = DecimalField('Price')
+    quantity = IntegerField('Quantity')
+    released_on = DateField('Release Date')
+    status = SelectField('Status',
         choices=[
             'Standard',
             'Limited Edition',
@@ -121,17 +118,13 @@ class AddNewCardForm(FlaskForm):
             'Promo',
             'Private collection'
             ])
-    stock = SelectField('Stock', validators=[
-        DataRequired()],
+    stock = SelectField('Stock',
         choices=[
             'In stock',
             'Out of stock',
             'On Sale!',
             ])
     submit = SubmitField('Add card')
-    card_type = SelectField('Card Type', id='card_type', validators=[
-        DataRequired()],
-        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
 
 
     def validate_card_name(self, card_edits_dict):
@@ -154,9 +147,9 @@ class EditCardForm(FlaskForm):
     description = TextAreaField('Description', validators=[
         DataRequired(),
         Length(min=0, max=1023)])
-    type = StringField('Type', validators=[
-        DataRequired(),
-        Length(min=0, max=15)])
+    card_type = SelectField('Card Type', id='card_type', validators=[
+        DataRequired()],
+        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
     released_on = DateField('Release Date', validators=[
         DataRequired()])
     status = SelectField('Status', validators=[

@@ -132,7 +132,7 @@ class Card:
         self.id = db_card['id']
         self.card_name = db_card['card_name']
         self.description = db_card['description']
-        self.type = db_card['type']
+        self.type = db_card['card_type']
         self.released_on = db_card['released_on']
         self.status = db_card['status']
         self.quantity = db_card['quantity']
@@ -147,30 +147,30 @@ class Card:
     def add_card(cls, new_card_dict):
         query = """
                 INSERT INTO cards (
+                    card_genus,
+                    card_issue,
                     card_name,
+                    card_order,
+                    card_type,
                     description,
-                    type,
-                    released_on,
-                    status,
-                    quantity,
                     filename,
                     price,
-                    card_genus,
-                    card_order,
-                    card_issue
+                    quantity,
+                    released_on,
+                    status
                     )
                 VALUES (
+                    %(card_genus)s,
+                    %(card_issue)s,
                     %(card_name)s,
+                    %(card_order)s,
+                    %(card_type)s,
                     %(description)s,
-                    %(type)s,
-                    NOW(),
-                    %(status)s,
-                    %(quantity)s,
                     %(filename)s,
                     %(price)s,
-                    %(card_genus)s,
-                    %(card_order)s,
-                    %(card_issue)s
+                    %(quantity)s,
+                    %(released_on)s,
+                    %(status)s
                     );
                 """
         return connectToMySQL(db).query_db(query, new_card_dict)

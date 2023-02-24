@@ -25,9 +25,9 @@
                     {% endfor %}
                 </p>
                 <p>
-                    {{ form.type.label }}<br>
-                    {{ form.type(cols=50, rows=4) }}<br>
-                    {% for error in form.type.errors %}
+                    {{ form.card_type.label }}<br>
+                    {{ form.card_type(cols=50, rows=4) }}<br>
+                    {% for error in form.card_type.errors %}
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </p>

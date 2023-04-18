@@ -13,29 +13,10 @@
     <body>
         <div class="view-cards-entire-container">
             <div class="fixed-banner-and-nav-bar">
-                <div class="logo">
-                    <a href="{{ url_for('index') }}">Home</a>
-                </div>
-                <div class="banner">
-                    Banner
-                </div>
-                <div class="blank">
-
-                </div>
                 <div class="menu-left">
-                    <a href="#" class="menu-anchor">
-                        <button type="button" action="#" class="menu-div menu-news">
-                            News
-                        </button>
-                    </a>
                     <a href="/cards" class="menu-anchor">
                         <button type="button" class="menu-div menu-cards">
                             Cards
-                        </button>
-                    </a>
-                    <a href="#"  class="menu-anchor">
-                        <button type="button" action="#" class="menu-div menu-traders-tent" disabled>
-                            Coming soon!
                         </button>
                     </a>
                     <a href="#" class="menu-anchor">
@@ -46,16 +27,6 @@
                 </div>
                 <div class="menu-right">
                     <input type="text" placeholder="Search my site (coming soon!)" class="search-bar">
-                    <a href="#" class="menu-cart">
-                        <button type="button" action="#" class="menu-right-div menu-cart">
-                            Cart
-                        </button>
-                    </a>
-                    <a href="{{ url_for('user', username=current_user.username) }}" class="menu-profile">
-                        <button type="button" action="#" class="menu-right-div menu-profile">
-                            Profile
-                        </button>
-                    </a>
                     <a href="{{ url_for('logout') }}" class="menu-log-out">
                         <button type="button" action="#" class="menu-right-div menu-log-out">
                             Log out

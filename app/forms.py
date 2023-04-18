@@ -89,16 +89,19 @@ class EditProfileForm(FlaskForm):
 
 class AddNewCardForm(FlaskForm):
     card_genus = StringField('Card Genus', id='card_genus')
-    card_issue = SelectField('Card Issue', 
+    card_issue = SelectField('Card Issue', id='card_issue',
         choices=[
+            # ('', 'select issue'),
+            'select issue',
             'playable',
             'collectable'
             ])
-    card_name = StringField('Name', validators=[
-        DataRequired()])
+    card_name = StringField('Name')
     card_order = StringField('Card Order', id='card_order')
     card_type = SelectField('Card Type', id='card_type',
         choices=[
+            # ('', 'select card type'),
+            'select card type',
             'Entity',
             'Item',
             'Helper',
@@ -112,14 +115,18 @@ class AddNewCardForm(FlaskForm):
     released_on = DateField('Release Date')
     status = SelectField('Status',
         choices=[
+            # ('', 'select status'),
+            'select status',
             'Standard',
             'Limited Edition',
             'Gone Forever!',
             'Promo',
-            'Private collection'
+            'Private Collection'
             ])
     stock = SelectField('Stock',
         choices=[
+            # ('', 'select stock'),
+            'select stock',
             'In stock',
             'Out of stock',
             'On Sale!',
@@ -149,12 +156,18 @@ class EditCardForm(FlaskForm):
         Length(min=0, max=1023)])
     card_type = SelectField('Card Type', id='card_type', validators=[
         DataRequired()],
-        choices=['Entity', 'Item', 'Helper', 'Philosophy', 'Spirit'])
+        choices=[
+            'Entity',
+            'Item',
+            'Helper',
+            'Philosophy',
+            'Spirit'])
     released_on = DateField('Release Date', validators=[
         DataRequired()])
     status = SelectField('Status', validators=[
         DataRequired()],
         choices=[
+            'select status',
             'Limited Edition',
             'Gone Forever!',
             'Promo',

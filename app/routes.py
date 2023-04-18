@@ -1,6 +1,5 @@
 from app import app
 from app.forms import EditCardForm
-from app.forms import EditProfileForm
 from app.forms import LoginForm
 from app.forms import AddNewCardForm
 from app.forms import RegistrationForm
@@ -29,11 +28,9 @@ def before_request():
 
 
 @app.route('/')
-@app.route('/index')
 @login_required
 def index():
-    posts = []
-    return render_template('index.html', title='Home', posts=posts)
+    return redirect(url_for('view_cards'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -104,32 +101,6 @@ def user(username):
     return render_template('404.html')
 
 
-@app.route('/edit_profile', methods=['GET', 'POST'])
-@login_required
-def edit_profile():
-    form = EditProfileForm(current_user.username, current_user.about_me)
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.about_me = form.about_me.data
-        current_user.name_first = form.name_first.data
-        current_user.name_last = form.name_last.data
-        current_user.birthday = form.birthday.data
-        current_user.gift_bday = form.gift_bday.data
-        current_user.gift_xmas = form.gift_xmas.data
-        current_user.update_profile(current_user.__dict__)
-        flash('Your changes have been saved.', 'profile_updated')
-        return redirect(url_for('edit_profile'))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.about_me.data = current_user.about_me
-        form.name_first.data = current_user.name_first
-        form.name_last.data = current_user.name_last
-        form.birthday.data = current_user.birthday
-        form.gift_bday.data = current_user.gift_bday
-        form.gift_xmas.data = current_user.gift_xmas
-    return render_template('edit_profile.html', title='Edit Profile', form=form)
-
-
 # Fix this base template inheritance first.
 @app.route('/admin')
 @login_required
@@ -140,12 +111,9 @@ def admin_dashboard():
 @app.route('/admin/cards/add_card', methods=['GET', 'POST'])
 @login_required
 def admin_add_card():
-    print("FUNCTION ENTERED!")
     form = AddNewCardForm()
-    print("FORM CREATED!")
     # if form.validate_on_submit():
     if request.method == 'POST':
-        print("FORM VALIDATED!")
         new_card_dict = {
             'card_genus': form.card_genus.data,
             'card_issue': form.card_issue.data,

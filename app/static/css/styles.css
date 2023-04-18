@@ -85,7 +85,6 @@ body {
     grid-template-areas: 
         ". . ."
         ". notifications ."
-        ". switches ."
         ". page-info ."
         "miscellaneous-blurb all-cards email-blurb";
 }
@@ -99,34 +98,10 @@ body {
     grid-template-rows: 10vh 5vh;
     grid-template-columns: 15% 70% 15%;
     grid-template-areas:
-        "logo banner blank"
+        "header header header"
         "menu-left . menu-right";
     justify-items: stretch;
     background-color: white;
-}
-
-.logo {
-    grid-area: logo;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: yellow; */
-}
-
-.banner {
-    grid-area: banner;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: yellowgreen; */
-}
-
-.blank {
-    grid-area: blank;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: violet; */
 }
 
 .menu-anchor {
@@ -242,8 +217,8 @@ body {
 .all-cards {
     grid-area: all-cards;
     padding: 2%;
-    border-right: 2pt solid black;
-    border-left: 2pt solid black;
+    /* border-right: 2pt solid black;
+    border-left: 2pt solid black; */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -757,13 +732,13 @@ body {
 
 .remove-button-styling {
     background: none;
-	color: inherit;
+    color: inherit;
     display: inline;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 .card-like-button,
@@ -778,7 +753,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .card-add-to-cart-button {

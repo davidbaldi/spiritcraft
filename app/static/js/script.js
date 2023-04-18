@@ -1,3 +1,24 @@
+function toggleCardIssueField(value) {
+    var typeField = document.getElementById("card_type");
+    var genusField = document.getElementById("card_genus");
+    var orderField = document.getElementById("card_order");
+
+
+    if (value == "select issue") {
+        typeField.disabled = true;
+        genusField.disabled = true;
+        orderField.disabled = true;
+    } else if (value == "collectable") {
+        typeField.disabled = true;
+        genusField.disabled = true;
+        orderField.disabled = true;
+    } else if (value == "playable") {
+        typeField.disabled = false;
+        genusField.disabled = false;
+        orderField.disabled = false;
+    };
+};
+
 function toggleCardLike(cardId) {
     var cardURL = "/cards/toggle_card_like";
     var heartButton = document.getElementById('heartButton' + cardId);
@@ -16,13 +37,31 @@ function toggleCardLike(cardId) {
     .then(response => response.json())
     .then(response => {
         if (response.isCardLiked == "true") {
-            heartImage.src = "static/img-liked.png";
+            heartImage.src = "static/img-liked.jpg";
             heartButton.ariaPressed = true;
         } else if (response.isCardLiked == "false") {
-            heartImage.src = "static/img-unliked.png";
+            heartImage.src = "static/img-unliked.jpg";
             heartButton.ariaPressed = false;
         };
     });
+};
+
+function toggleCardStatusField() {
+    var statusField = document.getElementById("status");
+    var stockField = document.getElementById("stock");
+    var quantityField = document.getElementById("quantity");
+    var priceField = document.getElementById("price");
+
+    if (statusField.value == 'Gone Forever!'
+        || statusField.value == 'Private Collection') {
+        stockField.disabled = true;
+        quantityField.disabled = true;
+        priceField.disabled = true;
+    } else {
+        stockField.disabled = false;
+        quantityField.disabled = false;
+        priceField.disabled = false;
+    }
 };
 
 function toggleGenusOrOrder(value) {
@@ -55,21 +94,20 @@ function togglePriceField(value) {
     } else if (value != "Out of stock") {
         priceField.disabled = false;
         quantityField.disabled = false;
-    }
-}
+    };
+};
 
-function toggleCardIssueField(value) {
-    var TypeField = document.getElementById("card_type");
-    var genusField = document.getElementById("card_genus");
-    var orderField = document.getElementById("card_order");
-
-    if (value == "collectable") {
-        TypeField.disabled = true;
-        genusField.disabled = true;
-        orderField.disabled = true;
-    } else if (value == "playable") {
-        TypeField.disabled = false;
-        genusField.disabled = false;
-        orderField.disabled = false;
-    }
-}
+function validateNewCardFields() {
+    if (document.getElementById("card_issue").value == "select issue") {
+        alert("Please select a card issue.")
+        return false;
+    } else if (document.getElementById("filename").value == "") {
+        alert("Please provide a filename.")
+        return false;
+    } else if (document.getElementById("card_name").value == "") {
+        alert("Please provide a card name.")
+        return false;
+    } else {
+        return true;
+    };
+};

@@ -15,10 +15,10 @@
         <div class="card-like-button">
             {% if card.id in current_user.favorite_cards %}
                 {% set isCardLiked = 'true' %}
-                {% set img_src_version = '/static/img-liked.png' %}
+                {% set img_src_version = '/static/img-liked.jpg' %}
             {% elif card.id not in current_user.favorite_cards %}
                 {% set isCardLiked = 'false' %}
-                {% set img_src_version = '/static/img-unliked.png' %}
+                {% set img_src_version = '/static/img-unliked.jpg' %}
             {% endif %}
             <form action="#">
                 <button type="button" id="heartButton{{ card.id }}" class="remove-button-styling" 
@@ -28,7 +28,7 @@
             </form>
         </div>
         <div class="card-add-to-cart-button">
-            <img src="/static/img-cart.png" alt="'Add to Cart' button" class="card-img-add-to-cart-button">
+            <img src="/static/img-cart.jpg" alt="'Add to Cart' button" class="card-img-add-to-cart-button">
         </div>
     </div>
 </div>

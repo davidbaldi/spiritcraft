@@ -267,7 +267,6 @@ class Card:
                 WHERE favorite.user_id = %(id)s;
                 """
         rows_of_cards = connectToMySQL(db).query_db(query, user_dict)
-        # if rows_of_cards:
         for favorite_card in rows_of_cards:
             card = Card(favorite_card)
             current_user.favorite_cards.append(card.id)

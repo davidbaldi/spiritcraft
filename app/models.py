@@ -1,14 +1,15 @@
 from app import login
 from flask_login import current_user
 from flask_login import UserMixin
-from flask import session
-from hashlib import md5
 from mysqlconnection import connectToMySQL
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
-# db = __import__('config').Config.db # What is going on here?
-db = '' # How is this empty but the database can still be accessed?
+# What is going on here?
+# db = __import__('config').Config.db
+
+# What is going on here?
+db = ''
 
 
 @login.user_loader
@@ -19,22 +20,15 @@ def load_user(id):
 class User(UserMixin):
 
     def __init__(self, user_dict):
-        self.id = user_dict['id']
+        # Alphabetically...
         self.email = user_dict['email']
-        self.username = user_dict['username']
-        self.password_hash = user_dict['password_hash']
+        self.favorite_cards = []
+        self.id = user_dict['id']
         self.name_first = user_dict['name_first']
         self.name_last = user_dict['name_last']
-        self.about_me = user_dict['about_me']
+        self.password_hash = user_dict['password_hash']
         self.registered_on = None
-        self.admin_privilege = None
-        self.birthday = user_dict['birthday']
-        self.gift_bday = user_dict['gift_bday']
-        self.gift_xmas = user_dict['gift_xmas']
-        self.favorite_cards = []
-        self.address = {}
-        self.cart = {}
-        self.orders = {}
+        self.username = user_dict['username']
 
 
     @classmethod
@@ -95,36 +89,6 @@ class User(UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-    def avatar(self, size):
-        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
-            digest, size)
-
-
-    def update_profile(self, current_user):
-        query = """
-                UPDATE users
-                SET username = %(username)s,
-                    about_me = %(about_me)s,
-                    name_first = %(name_first)s,
-                    name_last = %(name_last)s,
-                    birthday = %(birthday)s,
-                    gift_bday = %(gift_bday)s,
-                    gift_xmas = %(gift_xmas)s
-                WHERE id = %(id)s;
-                """
-        return connectToMySQL(db).query_db(query, current_user)
-
-
-    def record_last_seen(self, current_user):
-        return
-        query = """
-                UPDATE users
-                SET last_seen = %(last_seen)s
-                WHERE id = %(id)s;
-                """
-        return connectToMySQL(db).query_db(query, current_user)
 
 class Card:
 

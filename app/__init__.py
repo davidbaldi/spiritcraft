@@ -1,6 +1,6 @@
 from config import Config
 from flask_login import LoginManager
-from flask import Flask # Import class 'Flask' from package 'flask'
+from flask import Flask
 from logging.handlers import RotatingFileHandler
 from logging.handlers import SMTPHandler
 import logging
@@ -15,7 +15,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 
-# Still trying to understand this code right here...
+# Don't understand this code.
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None
@@ -27,21 +27,23 @@ if not app.debug:
         mail_handler = SMTPHandler(
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
             fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['ADMINS'], subject='Spiritcraft Site Failure',
+            toaddrs=app.config['ADMINS'], subject='Microblog Failure',
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 
+
+    # Don't undestand this code, either
     if not os.path.exists('logs'):
         os.mkdir('logs')
-    file_handler = RotatingFileHandler('logs/spiritcraft.log', maxBytes=10240, backupCount=10)
-    file_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
-    file_handler.setLevel(logging.INFO)
-    app.logger.addHandler(file_handler)
+        file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
+        file_handler.setFormatter(logging.Formatter(
+            '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
 
-    app.logger.setLevel(logging.INFO)
-    app.logger.info('Spiritcraft startup')
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Spiritcraft startup')
 
 
 from app import errors

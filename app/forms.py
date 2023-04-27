@@ -1,4 +1,3 @@
-from app.models import User
 from app.models import Card
 from flask_wtf import FlaskForm
 from flask import flash
@@ -64,27 +63,6 @@ class RegistrationForm(FlaskForm):
         if password != password2:
             return False
         return True
-
-
-class EditProfileForm(FlaskForm):
-    username = StringField('Username', validators=[
-        DataRequired()])
-    about_me = TextAreaField('About me', validators=[
-        Length(min=0, max=255)])
-    name_first = StringField('First name', validators=[
-        Length(min=0, max=63)])
-    name_last = StringField('Last name', validators=[
-        Length(min=0, max=63)])
-    birthday = DateField('Birthday')
-    gift_bday = BooleanField('Send me a birthday gift next year!')
-    gift_xmas = BooleanField('Send me a Christmas gift next year!')
-    submit = SubmitField('Submit')
-
-
-    def __init__(self, original_username, new_about_me):
-        super(EditProfileForm, self).__init__()
-        self.original_username = original_username
-        self.new_about_me = new_about_me
 
 
 class AddNewCardForm(FlaskForm):

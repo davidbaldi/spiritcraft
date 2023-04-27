@@ -293,7 +293,6 @@ cython_debug/
 config.py
 logs/
 mysqlconnection.py
-old_queries_*
 requirements.txt
 spiritcraftvenv/
 static/cards/

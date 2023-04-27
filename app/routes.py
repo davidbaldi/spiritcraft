@@ -20,13 +20,6 @@ from flask import url_for
 from werkzeug.urls import url_parse
 
 
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        current_user.record_last_seen(current_user.__dict__)
-
-
 @app.route('/')
 @login_required
 def index():

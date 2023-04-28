@@ -1,18 +1,63 @@
-/* Tantek Celik's reset */
-:link,:visited { text-decoration:none }
-ul, ol { list-style:none }
-/* h1, h2, h3, h4, h5, h6, pre, code { font-size:1em; } */
-ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input
-{ margin:0; padding:0 }
-a img, :link img, :visited img { border:none }
-address { font-style:normal }
+/* ~-~-~-~-~-~-~-~- Reset (Tantek Celik's) -~-~-~-~-~-~-~-~ */
+:link,
+:visited {
+    text-decoration: none
+}
+
+ul,
+ol {
+    list-style: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code {
+    font-size: 1em
+}
+
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+body,
+html,
+p,
+blockquote,
+fieldset,
+input {
+    margin: 0;
+    padding: 0
+}
+
+a img,
+:link img,
+:visited img {
+    border: none
+}
+
+address {
+    font-style: normal
+}
+
+/* ~-~-~-~-~-~-~-~- Reset (Corey McKeever's) -~-~-~-~-~-~-~-~ */
+* {
+    box-sizing: border-box
+}
 
 
-/* Corey's reset */
-* { box-sizing: border-box }
-
-
-/* End resets */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ End resets ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* Begin David Baldi's CSS */
@@ -24,7 +69,7 @@ body {
 }
 
 * {
-    font-family: Calibri; 
+    font-family: Calibri;
 }
 
 
@@ -82,7 +127,7 @@ body {
     display: grid;
     grid-template-rows: 15vh minmax(0, max-content) minmax(0, max-content) minmax(0, max-content) auto;
     grid-template-columns: 15% 70% 15%;
-    grid-template-areas: 
+    grid-template-areas:
         ". . ."
         ". notifications ."
         ". page-info ."
@@ -587,7 +632,7 @@ body {
 .registration-email-field {
     margin-top: 5px;
     margin-bottom: 5px;
-    flex-grow: 1;    
+    flex-grow: 1;
 }
 
 .registration-password-label {

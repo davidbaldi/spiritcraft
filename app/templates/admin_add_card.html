@@ -1,66 +1,55 @@
-{% extends "admin_base.html" %}
-
-{% block content %}
-    <div class="admin-add-card-container">
-        <fieldset class="admin-add-card-fieldset">
-            <h1>Add a Card</h1>
-            Or, go back to <b><a href="/admin/cards/all">view all cards</a></b>.
-            <hr>
-            <form action="" method="post" onsubmit="return validateNewCardFields()">
-                {{ form.hidden_tag() }}
-                <p>
-                    {{ form.card_issue.label }}<br>
-                    {{ form.card_issue(onchange="toggleCardIssueField(value)") }}<br>
-                </p>
-                <p>
-                    {{ form.filename.label }}<br>
-                    {{ form.filename() }}<br>
-                </p>
-                <p>
-                    {{ form.card_name.label }}<br>
-                    {{ form.card_name() }}
-                </p>
-                <p>
-                    {{ form.description.label }}<br>
-                    {{ form.description(size=64) }}<br>
-                </p>
-                <p>
-                    {{ form.card_type.label }}<br>
-                    {{ form.card_type(onchange="toggleGenusOrOrder(value)", disabled=True) }}<br>
-                </p>
-                <p>
-                    {{ form.released_on.label }}<br>
-                    {{ form.released_on(size=64) }}<br>
-                </p>
-                <p>
-                    {{ form.status.label }}<br>
-                    {{ form.status(onchange="toggleCardStatusField()") }}<br>
-                </p>
-                <p>
-                    {{ form.stock.label }}<br>
-                    {{ form.stock(onchange="togglePriceField(value)") }}<br>
-                </p>
-                <p>
-                    {{ form.quantity.label }}<br>
-                    {{ form.quantity(size=64) }}<br>
-                </p>
-                <p>
-                    {{ form.price.label }}<br>
-                    {{ form.price() }}<br>
-                </p>
-                <p>
-                    {{ form.card_genus.label }}<br>
-                    {{ form.card_genus(disabled=True) }}<br>
-                </p>
-                <p>
-                    {{ form.card_order.label }}<br>
-                    {{ form.card_order(disabled=True) }}<br>
-                </p>
-                <br>
-                <p>
-                    {{ form.submit() }}
-                </p>
-            </form>
-        </fieldset>
-    </div>
+{% extends "admin_base.html" %} {% block content %}
+<div class="admin-add-card-container">
+	<fieldset class="admin-add-card-fieldset">
+		<h1>Add a Card</h1>
+		Or, go back to <b><a href="/admin/cards/all">view all cards</a></b
+		>.
+		<hr />
+		<form action="" method="post" onsubmit="return validateNewCardFields()">
+			{{ form.hidden_tag() }}
+			<p>
+				{{ form.filename.label }}<br />
+				{{ form.filename() }}<br />
+			</p>
+			<p>
+				{{ form.card_name.label }}<br />
+				{{ form.card_name() }}
+			</p>
+			<p>
+				{{ form.description.label }}<br />
+				{{ form.description(size=64) }}<br />
+			</p>
+			<p>
+				{{ form.card_type.label }}<br />
+				{{ form.card_type(onchange="toggleGenusOrOrder(value)") }}<br />
+			</p>
+			<p>
+				{{ form.released_on.label }}<br />
+				{{ form.released_on(size=64) }}<br />
+			</p>
+			<p>
+				{{ form.status.label }}<br />
+				{{ form.status() }}<br />
+			</p>
+			<p>
+				{{ form.quantity.label }}<br />
+				{{ form.quantity(size=64) }}<br />
+			</p>
+			<p>
+				{{ form.price.label }}<br />
+				{{ form.price() }}<br />
+			</p>
+			<p>
+				{{ form.card_genus.label }}<br />
+				{{ form.card_genus(disabled=True) }}<br />
+			</p>
+			<p>
+				{{ form.card_order.label }}<br />
+				{{ form.card_order(disabled=True) }}<br />
+			</p>
+			<br />
+			<p>{{ form.submit() }}</p>
+		</form>
+	</fieldset>
+</div>
 {% endblock %}

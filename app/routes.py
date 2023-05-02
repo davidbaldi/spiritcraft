@@ -109,7 +109,6 @@ def admin_add_card():
     if request.method == 'POST':
         new_card_dict = {
             'card_genus': form.card_genus.data,
-            'card_issue': form.card_issue.data,
             'card_name': form.card_name.data,
             'card_order': form.card_order.data,
             'card_type': form.card_type.data,
@@ -119,7 +118,6 @@ def admin_add_card():
             'quantity': form.quantity.data,
             'released_on': form.released_on.data,
             'status': form.status.data,
-            'stock': form.stock.data
             }
         if not form.validate_card_name(new_card_dict):
             return redirect(request.url)

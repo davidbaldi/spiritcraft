@@ -27,7 +27,7 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
-    submit = SubmitField('Let\'s go!')
+    submit = SubmitField('sign in')
 
 
 class RegistrationForm(FlaskForm):
@@ -67,13 +67,6 @@ class RegistrationForm(FlaskForm):
 
 class AddNewCardForm(FlaskForm):
     card_genus = StringField('Card Genus', id='card_genus')
-    card_issue = SelectField('Card Issue', id='card_issue',
-        choices=[
-            # ('', 'select issue'),
-            'select issue',
-            'playable',
-            'collectable'
-            ])
     card_name = StringField('Name')
     card_order = StringField('Card Order', id='card_order')
     card_type = SelectField('Card Type', id='card_type',
@@ -91,24 +84,8 @@ class AddNewCardForm(FlaskForm):
     price = DecimalField('Price')
     quantity = IntegerField('Quantity')
     released_on = DateField('Release Date')
-    status = SelectField('Status',
-        choices=[
-            # ('', 'select status'),
-            'select status',
-            'Standard',
-            'Limited Edition',
-            'Gone Forever!',
-            'Promo',
-            'Private Collection'
-            ])
-    stock = SelectField('Stock',
-        choices=[
-            # ('', 'select stock'),
-            'select stock',
-            'In stock',
-            'Out of stock',
-            'On Sale!',
-            ])
+    status = StringField('Status')
+    stock = StringField('Stock')
     submit = SubmitField('Add card')
 
 

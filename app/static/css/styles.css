@@ -811,3 +811,221 @@ body {
 .card-img-add-to-cart-button {
     width: 1cm;
 }
+
+/* NEW SHEET, INCLUDES MEDIA QUERY COMMENTED OUT */
+
+/* @media screen and (max-width: 450px) { */
+
+/* ~~~~~~~~~~~~ Login Page Styles ~~~~~~~~~~~~ */
+
+.login-screen-container {
+    /* background-color: antiquewhite; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.login-mobile-notifications-box {
+    /* background-color: violet; */
+    height: fit-content;
+}
+
+.welcome-img1,
+.welcome-img2 {
+    /* background-color: aquamarine; */
+    width: 250px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    /* background-color: aqua; */
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.login-mobile-username-div,
+.login-mobile-password-div,
+.login-mobile-remember-me-div,
+.login-mobile-submit-button-div {
+    margin: 5px;
+}
+
+.login-mobile-username-input,
+.login-mobile-password-input,
+.login-mobile-remember-me-div,
+.login-mobile-submit-button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    border-radius: 10px;
+}
+
+.login-mobile-username-div {
+    /* background-color: blue; */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-mobile-username-input {
+    width: 240px;
+    border: 1pt solid black;
+    padding: 5px;
+}
+
+.login-mobile-password-div {
+    /* background-color: blueviolet; */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-mobile-password-input {
+    width: 240px;
+    border: 1pt solid black;
+    padding: 5px;
+}
+
+.login-mobile-remember-me-div {
+    /* background-color: chartreuse; */
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-mobile-submit-button-div {
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-mobile-submit-button {
+    background-color: white;
+    border: 1pt solid black;
+    width: 240px;
+    padding: 4px;
+}
+
+.login-mobile-register-link {
+    /* background-color: bisque; */
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ~~~~~~~~~~~~ Registration Page Styles ~~~~~~~~~~~~ */
+
+.register-screen-container {
+    /* background-color: antiquewhite; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-mobile-notifications-box {
+    /* background-color: violet; */
+    height: fit-content;
+}
+
+.welcome-img1,
+.welcome-img2 {
+    /* background-color: aquamarine; */
+    width: 250px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    /* background-color: aqua; */
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.register-mobile-username-div,
+.register-mobile-password-div,
+.register-mobile-remember-me-div,
+.register-mobile-submit-button-div {
+    margin: 5px;
+}
+
+.register-mobile-username-input,
+.register-mobile-password-input,
+.register-mobile-remember-me-div,
+.register-mobile-submit-button {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    border-radius: 10px;
+}
+
+.register-mobile-username-div {
+    /* background-color: blue; */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.register-mobile-username-input {
+    width: 240px;
+    border: 1pt solid black;
+    padding: 5px;
+}
+
+.register-mobile-password-div {
+    /* background-color: blueviolet; */
+    height: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.register-mobile-password-input {
+    width: 240px;
+    border: 1pt solid black;
+    padding: 5px;
+}
+
+.register-mobile-remember-me-div {
+    /* background-color: chartreuse; */
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-mobile-submit-button-div {
+    /* background-color: burlywood; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-mobile-submit-button {
+    background-color: white;
+    border: 1pt solid black;
+    width: 240px;
+    padding: 4px;
+}
+
+.register-mobile-register-link {
+    /* background-color: bisque; */
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+/* } */
+
+/* @media screen and (max-width: 2400px) {} */

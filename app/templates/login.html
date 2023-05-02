@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <link rel="stylesheet" href="/app/static/css/styles.css"> -->
-    <!-- <link rel="stylesheet" href="\\wsl.localhost\Ubuntu-20.04\home\spiritcraft\app\static\css\styles.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/uai5unw.css">
     <title>Please log in!</title>
 </head>
 <body>
-    <div class="login-whole-container">
-        <div class="notifications-box">
-            <p>
-                {% with messages = get_flashed_messages(category_filter=['invalid_username_or_password']) %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <span style="color: red;">
-                                {{ message }}
-                            </span>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <span style="color: red;">
-                                {{ message }}
-                            </span>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </p>
+    <div class="login-screen-container">
+        <div class="login-mobile-notifications-box">
+            {% with messages = get_flashed_messages(category_filter=['invalid_username_or_password']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color: red;">
+                            {{ message }}
+                        </span>
+                    {% endfor %}
+                {% else %}
+                    
+                {% endif %}
+            {% endwith %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color: red;">
+                            {{ message }}
+                        </span>
+                    {% endfor %}
+                {% else %}
+                        
+                {% endif %}
+            {% endwith %}
         </div>
-        <div class="logo-top">
-            <img src="{{ url_for('static', filename='logo1.jpg') }}" alt="Image of a Python" class="login-logos">
+        <div class="login-container">
+            <div class="welcome-img1-div">
+                <img src="{{ url_for('static', filename='login-snake-img-1.jpg') }}" alt="Login snake image" class="welcome-img1">
+            </div>
+            <div class="login-box">
+                <form action="" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="login-mobile-username-div">
+                        <!-- <input type="text" class="login-mobile-username-input" placeholder="username"> -->
+                        {{ form.username(class_='login-mobile-username-input', placeholder="username") }}
+                    </div>
+                    <div class="login-mobile-password-div">
+                        <!-- <input type="password" class="login-mobile-password-input" placeholder="password"> -->
+                        {{ form.password(class_='login-mobile-password-input', placeholder="password") }}
+                    </div>
+                    <div class="login-mobile-remember-me-div">
+                        <label for="login-mobile-remember-me-id">
+                            remember me, please!
+                        </label>
+                        <div class="login-mobile-remember-me-div">
+                            <!-- <input type="checkbox" id="login-mobile-remember-me-id" class="login-mobile-remember-me-input"> -->
+                            {{ form.remember_me(id="checkbox") }}
+                        </div>
+                    </div>
+                    <div class="login-mobile-submit-button-div">
+                        <!-- <button type="submit" class="login-mobile-submit-button">sign in</button> -->
+                        {{ form.submit(class_='login-mobile-submit-button') }}
+                    </div>
+                </form>
+            </div>
+            <div class="welcome-img2-div">
+                <img src="{{ url_for('static', filename='login-snake-img-2.jpg') }}" alt="Login snake image" class="welcome-img2">
+            </div>
         </div>
-        <fieldset class="login-square-fieldset">
-            <legend class="login-legend">
-                Welcome, friends!
-            </legend>
-            <form action="" method="post">
-                {{ form.hidden_tag() }}
-                <div class="login-username-label-and-field">
-                    <label for="username" class="login-username-label">Username</label>
-                    <!-- <input type="text" id="username" class="login-username-field"> -->
-                    {{ form.username(id='username', class_='login-username-field') }}
-                </div>
-                <br>
-                <div class="login-password-label-and-field">
-                    <label for="password" class="login-password-label">Password</label>
-                    <!-- <input type="password" id="password" class="login-password-field"> -->
-                    {{ form.password(id='password', class='login-password-field') }}
-                </div>
-                <br>
-                <div class="login-remember-me-label-and-field">
-                    <label for="checkbox" class="login-remember-me-label">Remember me</label>
-                    <!-- <input type="checkbox" id="checkbox"> -->
-                    {{ form.remember_me(id="checkbox") }}
-                </div>
-                <div class="login-submit-button-div">
-                    <!-- <button type="submit" class="login-submit-button-itself">Let's go!</button> -->
-                    {{ form.submit(class_='login-submit-button-itself') }}
-                </div>
-            </form>
-        </fieldset>
-        <div class="logo-bottom">
-            <img src="{{ url_for('static', filename='logo2.jpg') }}" alt="Image of another Python" class="login-logos">
-        </div>
-        <div class="login-info-underneath">
-            <a href="{{ url_for('register') }}">Create an account</a>
+        <div class="login-mobile-register-link">
+            <a href="{{ url_for('register') }}">what is this place?</a>
         </div>
     </div>
 </body>

@@ -103,7 +103,6 @@ class Card:
         self.price = db_card['price']
         self.genus = db_card['card_genus']
         self.order = db_card['card_order']
-        self.card_issue = db_card['card_issue']
         self.filename = db_card['filename']
 
 
@@ -112,7 +111,6 @@ class Card:
         query = """
                 INSERT INTO cards (
                     card_genus,
-                    card_issue,
                     card_name,
                     card_order,
                     card_type,
@@ -125,7 +123,6 @@ class Card:
                     )
                 VALUES (
                     %(card_genus)s,
-                    %(card_issue)s,
                     %(card_name)s,
                     %(card_order)s,
                     %(card_type)s,
